@@ -28,7 +28,8 @@ passport.use(
 
       // Extract the first name and last name from the user profile.
       // Not sure how to handle cultures that swap first/last names..
-      const displayName = `${profile.given_name} ${profile.family_name}`;
+      // Due to how ISCTE's FénixEDU handles names, and to stay within Discord 32 characther limit,it's best to get the "full name" that will actually be shorter
+      const displayName = `${profile.name}`;
 
       models.User.findOrCreate({
         where: {
