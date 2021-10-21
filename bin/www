@@ -9,6 +9,12 @@ const app = require("../app");
 const debug = require("debug")("discord-user-manager:www");
 const fs = require("fs");
 const http = require("http");
+const https = require("https");
+const keysDir = process.env.SSLPATH;
+const options = {
+  key  : fs.readFileSync(keysDir + "key.pem"),
+  cert : fs.readFileSync(keysDir + "chain.pem")
+};
 const models = require("../models");
 const settings = require("../settings");
 
@@ -19,9 +25,9 @@ const port = normalizePort(process.env.PORT || "3000");
 app.set("port", port);
 
 /**
- * Create HTTP server.
+ * Create HTTPs server.
  */
-const server = http.createServer(app);
+const server = https.createServer(options, app);
 
 /**
  * Crate the "data" folder if it doesn't exist, otherwise sequelize.sync() will fail.
