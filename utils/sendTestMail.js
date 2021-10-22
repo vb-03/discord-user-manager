@@ -19,7 +19,7 @@ async function main() {
       welcomeMessage = welcomeMessage.replace(/{{name}}/g, "Test");
       welcomeMessage = welcomeMessage.replace(/{{email}}/g, process.env.TEST_EMAIL);
       welcomeMessage = welcomeMessage.replace(/{{password}}/g, "password");
-      welcomeMessage = welcomeMessage.replace(/{{server}}/g, "http://localhost:3000/login");
+      welcomeMessage = welcomeMessage.replace(/{{server}}/g, process.env.HOST );
 
       // Message object
       let message = {
