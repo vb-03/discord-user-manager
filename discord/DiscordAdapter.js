@@ -574,7 +574,7 @@ class DiscordAdapter extends EventEmitter {
    * Add a role to a Discord user.
    * @param {Discord.GuildMemberResolvable} guildMemberResolvable Data that resolves to give a GuildMember object.
    * @param {Discord.RoleResolvable} roleResolvable Either the name of the role or the Discord.Role to give to the user.
-   * @throws If the user does not resolve to a guild member or the role does not resovle to a valid role.
+   * @throws If the user does not resolve to a guild member or the role does not resolve to a valid role.
    */
   async addRole(guildMemberResolvable, roleResolvable) {
     const guildMember = await this.resolveGuildMember(guildMemberResolvable);
