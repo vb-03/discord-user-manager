@@ -524,17 +524,17 @@ class DiscordAdapter extends EventEmitter {
     // First check if the user is already a member of the guild.
     let guildMember = await this.resolveGuildMember(userResolvable);
 
-    if (guildMember) {
+    /* if (guildMember) {
       this.logInfo(`User ${guildMember.user.tag} is already a member of the guild.`);
       // Just update the nickname.
       this.setNickname(userResolvable, nick);
-    } else {
+    } else { */
       // Discord user not a member of the guild yet.
       const discordUser = await this.resolveUser(userResolvable);
       if (!discordUser) {
         throw new Error(`User with id ${userResolvable.id || userResolvable} was not found.`);
       }
-
+      
       // Add the member and set the nickname.
       try {
         guildMember = await guild.addMember(discordUser, {
