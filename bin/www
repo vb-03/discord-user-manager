@@ -12,8 +12,8 @@ const http = require("http");
 const https = require("https");
 const keysDir = process.env.SSLPATH;
 const options = {
-  key  : fs.readFileSync(keysDir + "key.pem"),
-  cert : fs.readFileSync(keysDir + "chain.pem")
+  key  : fs.readFileSync(keysDir + process.env.HOST + "-key.pem"),
+  cert : fs.readFileSync(keysDir + process.env.HOST + "-chain.pem")
 };
 const models = require("../models");
 const settings = require("../settings");
